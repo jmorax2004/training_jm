@@ -1,0 +1,70 @@
+---
+title: "Mini literate analysis"
+author: "jm"
+format: html
+editor: visual
+---
+
+## Introduction
+
+these data include different physical and chemical parameters measured at the north pole in the water column
+
+## set up
+```{r}
+#| message: false
+#| warning: false 
+ 
+library(readr)
+library(here)
+```
+
+## data 
+
+```{r}
+bg_chem <- read.csv(here("data/BGchem2008data.csv"))
+
+```
+
+
+##exploring data 
+
+```{r}
+colnames(bg_chem)
+str(bg_chem)
+summary(bg_chem)
+unique(bg_chem)
+
+
+
+
+
+```
+
+
+## analysis
+
+```{r}
+nitrate <- mean(bg_chem$NO3)
+nitrite <- mean(bg_chem$NO2)
+ammon <- mean(bg_chem$NH4)
+phos <- mean(bg_chem$P)
+nitrate_max <- max(bg_chem$NO3)
+```
+
+###calculate mean redfield ratio
+
+```{r}
+ratio <- (nitrate + nitrite + ammon / phos)
+```
+
+###plot ratio
+
+```{r}
+plot(bg_chem$P, bg_chem$NO2 + bg_chem$NO3 + bg_chem$NH4)
+```
+
+
+
+
+
+

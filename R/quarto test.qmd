@@ -1,0 +1,42 @@
+---
+title: "quarto test"
+author: "julian"
+format: html
+editor: visual
+---
+
+## Introduction
+
+bio chemical data 
+
+## set up
+```{r}
+library(dbplyr)
+library(tidyr)
+library(readr)
+```
+
+## data
+```{r}
+data <- read.csv("https://knb.ecoinformatics.org/knb/d1/mn/v2/object/df35b.302.1")
+```
+
+## explore data 
+```{r}
+colnames(data)
+unique(data)
+head(data)
+summary(data)
+summary(data$Pink)
+```
+
+
+
+
+
+
+
+
+
+
+
